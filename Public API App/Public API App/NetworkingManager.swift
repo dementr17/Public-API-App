@@ -25,7 +25,7 @@ class NetworkingManager {
                 let memsDescription = try JSONDecoder().decode(MemsModel.self, from: data)
                 DispatchQueue.main.async {
                     complition(memsDescription)
-                    print(memsDescription)
+//                    print(memsDescription)
                 }
                 self.successAlert()
 //                print("MemesDescription: \(memsDescription)")
