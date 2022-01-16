@@ -13,11 +13,11 @@ class ViewCell: UICollectionViewCell {
     @IBOutlet weak var idMemes: UILabel!
     
     func configure(with memes: Memes) {
-        nameMemes.text = memes.name ?? ""
-        idMemes.text = "ID: \(memes.id ?? "")"
+        nameMemes.text = memes.name
+        idMemes.text = "ID: \(memes.id)"
         
         DispatchQueue.global().async {
-            guard let url = URL(string: memes.url ?? "") else { return }
+            guard let url = URL(string: memes.url) else { return }
             
             guard let imageData = try? Data(contentsOf: url) else { return }
             

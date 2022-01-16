@@ -17,7 +17,7 @@ class NetworkingManager {
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, let _ = response else {
-                print(error?.localizedDescription ?? "No error description")
+//                print(error?.localizedDescription ?? "No error description")
                 return
             }
             
@@ -25,12 +25,13 @@ class NetworkingManager {
                 let memsDescription = try JSONDecoder().decode(MemsModel.self, from: data)
                 DispatchQueue.main.async {
                     complition(memsDescription)
+                    print(memsDescription)
                 }
                 self.successAlert()
-                print(memsDescription)
+//                print("MemesDescription: \(memsDescription)")
             } catch {
                 self.failedAlert()
-                print(error.localizedDescription)
+//                print(error.localizedDescription)
             }
         }.resume()
     }

@@ -7,21 +7,22 @@
 
 import UIKit
 
-private let reuseIdentifier = "memCell"
-
-private var memModel: MemsModel!
-private var memes: [Memes] = []
-let memesURL = "https://api.imgflip.com/get_memes"
-
-
 class ViewController: UICollectionViewController {
 
+    let memesURL = "https://api.imgflip.com/get_memes"
+    var memModel: MemsModel!
+    var memes: [Memes] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NetworkingManager.shared.fetchMemes(url: memesURL) { mem in
-            memModel = mem
+            self.memModel = mem
+            print(self.memModel!)
         }
         
+        print("Mem model: \(self.memModel)")
+        memes = memModel.data.memes
+//            print(memes)
     }
 
     // MARK: UICollectionViewDataSource
@@ -33,13 +34,15 @@ class ViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memes.count
+//        print(memes.count)
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memCell", for: indexPath) as! ViewCell
         cell.backgroundColor = .white
-        memes = memModel.data.memes
+        
         let mem = memes[indexPath.row]
+        print(mem)
         cell.configure(with: mem)
         return cell
     }
