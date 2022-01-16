@@ -9,12 +9,12 @@ import UIKit
 
 class ViewCell: UICollectionViewCell {
     @IBOutlet weak var imageMemes: UIImageView!
-    @IBOutlet weak var nameMemes: UILabel!
-    @IBOutlet weak var idMemes: UILabel!
+//    @IBOutlet weak var nameMemes: UILabel!
+//    @IBOutlet weak var idMemes: UILabel!
     
     func configure(with memes: Memes) {
-        nameMemes.text = memes.name
-        idMemes.text = "ID: \(memes.id)"
+//        nameMemes.text = memes.name
+//        idMemes.text = "ID: \(memes.id)"
         
         DispatchQueue.global().async {
             guard let url = URL(string: memes.url) else { return }
