@@ -46,13 +46,13 @@ extension NetworkingManager {
                 message: "You can see the results in the Debug aria",
                 preferredStyle: .alert
             )
-            //передача в основной поток действия
+            
             let okAction = UIAlertAction(title: "OK", style: .default)
             alert.addAction(okAction)
 //            self.present(alert, animated: true)
         }
     }
-    //алерты для обработки ошибки передачи
+    
     private func failedAlert() {
         DispatchQueue.main.async {
             let alert = UIAlertController(

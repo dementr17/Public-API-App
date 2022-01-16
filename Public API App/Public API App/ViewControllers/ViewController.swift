@@ -9,9 +9,9 @@ import UIKit
 
 class ViewController: UICollectionViewController {
 
-    let memesURL = "https://api.imgflip.com/get_memes"
-    var memes: [Memes] = []
-    var memModel: MemsModel? {
+    private let memesURL = "https://api.imgflip.com/get_memes"
+    private var memes: [Memes] = []
+    private var memModel: MemsModel? {
         didSet {
             self.memes = self.memModel?.data.memes ?? []
             
@@ -23,19 +23,18 @@ class ViewController: UICollectionViewController {
         NetworkingManager.shared.fetchMemes(url: memesURL) { mem in
             self.memModel = mem
         }
-        
     }
+ 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memes.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memCell", for: indexPath) as! ViewCell
         
@@ -43,6 +42,23 @@ class ViewController: UICollectionViewController {
         cell.configure(with: mem)
         
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let memInfo = memes[indexPath.item]
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let infoVC = storyboard.instantiateViewController(identifier: "InfoViewController") as? InfoViewController else { return }
+        infoVC.memesInfo = memInfo
+        show(infoVC, sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showInfoVC" {
+            performSegue(withIdentifier: "showInfoVC", sender: nil)
+        }
+        guard let destination = segue.destination as? InfoViewController else { return }
+        destination.memesInfo = memes[0]
     }
 }
 
@@ -58,7 +74,8 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        10
+        20
     }
 }
