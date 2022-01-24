@@ -25,11 +25,6 @@ class ViewController: UICollectionViewController {
     }
  
     // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        1
-    }
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         memes.count
     }
@@ -38,27 +33,14 @@ class ViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memCell", for: indexPath) as! ViewCell
         
         let mem = memes[indexPath.row]
-        cell.configure(with: mem, onTapClosure: {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: "MemViewController") as! MemViewController
-                    navigationController?.pushViewController(controller, animated: true)
-        })
+		cell.configure(with: mem, onTapAction: { [weak self] in
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+					let controller = storyboard.instantiateViewController(withIdentifier: "MemViewController") as! MemViewController
+			self?.navigationController?.pushViewController(controller, animated: true)
+		})
         
         return cell
     }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
-    }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-//        guard let indexPath = collectionView.indexPathsForSelectedItems else { return }
-//        let mems = memes[indexPath.row]
-//               let memVC = segue.destination as! MemViewController
-////        memVC.name = mems
-//
-//    }
 }
 
 

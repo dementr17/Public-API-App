@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9mb-F0-gA5">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9mb-F0-gA5">
                             <size key="itemSize" width="127" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -26,29 +26,32 @@
                         <cells>
                             <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="Cell" reuseIdentifier="memCell" id="eZT-EF-Uei" customClass="ViewCell" customModule="Public_API_App" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="127" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ogg-DU-iYc" customClass="ViewCell" customModule="Public_API_App" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="127" height="128"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eit-Pt-cZg">
+                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eit-Pt-cZg">
                                             <rect key="frame" x="0.0" y="0.0" width="127" height="128"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rN-7s-85u">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCE-HQ-ClJ">
                                             <rect key="frame" x="0.0" y="0.0" width="127" height="128"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain"/>
                                             <connections>
-                                                <action selector="buttonDidTapped:" destination="eZT-EF-Uei" eventType="touchUpInside" id="wRa-6t-S9R"/>
+                                                <action selector="buttonDidTap:" destination="eZT-EF-Uei" eventType="touchUpInside" id="IX7-Fm-jMX"/>
                                             </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="6rN-7s-85u" secondAttribute="bottom" id="6cu-wo-WPs"/>
-                                        <constraint firstAttribute="trailing" secondItem="6rN-7s-85u" secondAttribute="trailing" id="Eiz-Cf-SGJ"/>
-                                        <constraint firstItem="6rN-7s-85u" firstAttribute="top" secondItem="Ogg-DU-iYc" secondAttribute="top" id="JGP-bT-OJh"/>
-                                        <constraint firstItem="6rN-7s-85u" firstAttribute="leading" secondItem="Ogg-DU-iYc" secondAttribute="leading" id="fsm-mm-PkB"/>
+                                        <constraint firstItem="eit-Pt-cZg" firstAttribute="top" secondItem="Ogg-DU-iYc" secondAttribute="top" id="CuJ-uy-P7A"/>
+                                        <constraint firstAttribute="trailing" secondItem="eit-Pt-cZg" secondAttribute="trailing" id="LAG-p4-A7b"/>
+                                        <constraint firstItem="kCE-HQ-ClJ" firstAttribute="leading" secondItem="Ogg-DU-iYc" secondAttribute="leading" id="N4Q-dw-pT3"/>
+                                        <constraint firstItem="kCE-HQ-ClJ" firstAttribute="top" secondItem="Ogg-DU-iYc" secondAttribute="top" id="Vg8-Dj-pvd"/>
+                                        <constraint firstItem="eit-Pt-cZg" firstAttribute="leading" secondItem="Ogg-DU-iYc" secondAttribute="leading" id="W1H-Kk-CFN"/>
+                                        <constraint firstAttribute="trailing" secondItem="kCE-HQ-ClJ" secondAttribute="trailing" id="bHP-lb-1zz"/>
+                                        <constraint firstAttribute="bottom" secondItem="eit-Pt-cZg" secondAttribute="bottom" id="r3Q-Zk-u8c"/>
+                                        <constraint firstAttribute="bottom" secondItem="kCE-HQ-ClJ" secondAttribute="bottom" id="wEg-Ii-FOJ"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <color key="backgroundColor" red="0.99533146620000001" green="0.89051514860000003" blue="0.53905516860000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

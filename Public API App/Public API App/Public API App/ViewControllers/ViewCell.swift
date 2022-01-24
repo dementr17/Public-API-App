@@ -8,20 +8,17 @@
 import UIKit
 
 class ViewCell: UICollectionViewCell {
-    
-    private var onTapClosure: (() -> Void)?
-    
 
-    @IBOutlet weak var imageMemes: UIImageView! {
+	@IBAction func buttonDidTap(_ sender: Any) {
+		onTapAction?()
+	}
+	@IBOutlet weak var imageMemes: UIImageView! {
         didSet {
             imageMemes.layer.cornerRadius = 10
         }
     }
-    
-    @IBAction func buttonDidTap(_ sender: Any) {
-        onTapClosure?()
-    }
-    
+
+	private var onTapAction: (() -> Void)?
     private var imageURL: URL? {
         didSet {
             //каждый раз при обращении к юрл, обнуляем imageView и передаем по юрл изображение. Таким образом не происходит накладка изображения при переиндексации картинок
@@ -30,10 +27,9 @@ class ViewCell: UICollectionViewCell {
         }
     }
     
-    func configure(with mem: Memes, @escaping onTapClosure: (() -> Void)) {
-        
+	func configure(with mem: Memes, onTapAction: @escaping () -> Void) {
         imageURL = URL(string: mem.url)
-//        self.onTapClosure = onTapClosure
+		self.onTapAction = onTapAction
     }
     
     private func updateImage() {
