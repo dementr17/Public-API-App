@@ -9,20 +9,19 @@ import UIKit
 
 class ViewController: UICollectionViewController {
 
-    private let memesURL = "https://api.imgflip.com/get_memes"
+    private let urlMemes = "https://api.imgflip.com/get_memes"
     private var memes: [Memes] = []
-    private var memModel: MemsModel? {
+    private var memsModel: MemsModel? {
         didSet {
-            self.memes = self.memModel?.data.memes ?? []
-            
+            self.memes = self.memsModel?.data.memes ?? []
+
             collectionView.reloadData()
         }
     }
     
     override func viewDidLoad() {
-        NetworkingManager.shared.fetchMemes(url: memesURL) { mem in
-            self.memModel = mem
-        }
+        super.viewDidLoad()
+        fetchData()
     }
  
     // MARK: UICollectionViewDataSource
@@ -39,29 +38,47 @@ class ViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memCell", for: indexPath) as! ViewCell
         
         let mem = memes[indexPath.row]
-        cell.configure(with: mem)
+        cell.configure(with: mem, onTapClosure: {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "MemViewController") as! MemViewController
+                    navigationController?.pushViewController(controller, animated: true)
+        })
         
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let memInfo = memes[indexPath.item]
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let infoVC = storyboard.instantiateViewController(identifier: "InfoViewController") as? InfoViewController else { return }
-        infoVC.memesInfo = memInfo
-        show(infoVC, sender: nil)
+       
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showInfoVC" {
-            performSegue(withIdentifier: "showInfoVC", sender: nil)
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+//        guard let indexPath = collectionView.indexPathsForSelectedItems else { return }
+//        let mems = memes[indexPath.row]
+//               let memVC = segue.destination as! MemViewController
+////        memVC.name = mems
+//
+//    }
+}
+
+
+extension ViewController {
+    func fetchData() {
+        NetworkManager.shared.fetch(dataType: MemsModel.self, from: urlMemes) { result in
+            switch result {
+                
+            case .success(let memes):
+                self.memsModel = memes
+                self.collectionView.reloadData()
+            case .failure(let error):
+                self.failedAlert()
+                print(error)
+            }
         }
-        guard let destination = segue.destination as? InfoViewController else { return }
-        destination.memesInfo = memes[0]
     }
 }
 
+// MARK: Parameter Items
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemsPerRow: CGFloat = 2
@@ -79,7 +96,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         20
     }
 }
-
+// MARK: UIAlerts
 extension ViewController {
     private func successAlert() {
     DispatchQueue.main.async {

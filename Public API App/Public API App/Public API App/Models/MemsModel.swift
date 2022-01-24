@@ -20,7 +20,7 @@ struct Memes: Decodable {
     let id: String
     let name: String
     let url: String
-//    let width: Int?
-//    let height: Int?
-//    let box_count: Int?
+    let width: Int?
+    let height: Int?
+    let box_count: Int?
 }

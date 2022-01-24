@@ -14,9 +14,10 @@
 		5F020EB12794121E004E1010 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F020EAF2794121E004E1010 /* LaunchScreen.storyboard */; };
 		5F020EB92794131C004E1010 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F020EB82794131C004E1010 /* ViewController.swift */; };
 		5F020EBB27941351004E1010 /* ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F020EBA27941351004E1010 /* ViewCell.swift */; };
-		5F020EBD2794138D004E1010 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F020EBC2794138D004E1010 /* NetworkingManager.swift */; };
+		5F020EBD2794138D004E1010 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F020EBC2794138D004E1010 /* NetworkManager.swift */; };
 		5F020EBF27941CA7004E1010 /* MemsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F020EBE27941CA7004E1010 /* MemsModel.swift */; };
-		5F020EC12794844F004E1010 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F020EC02794844F004E1010 /* InfoViewController.swift */; };
+		5F5C792F279DC785002F0600 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5C792E279DC785002F0600 /* ImageCache.swift */; };
+		5F5C7931279DCAE3002F0600 /* MemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5C7930279DCAE3002F0600 /* MemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +30,10 @@
 		5F020EB22794121E004E1010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F020EB82794131C004E1010 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5F020EBA27941351004E1010 /* ViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCell.swift; sourceTree = "<group>"; };
-		5F020EBC2794138D004E1010 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		5F020EBC2794138D004E1010 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5F020EBE27941CA7004E1010 /* MemsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemsModel.swift; sourceTree = "<group>"; };
-		5F020EC02794844F004E1010 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		5F5C792E279DC785002F0600 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		5F5C7930279DCAE3002F0600 /* MemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,9 +106,9 @@
 		5F020EC527949F8B004E1010 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5F020EBA27941351004E1010 /* ViewCell.swift */,
 				5F020EB82794131C004E1010 /* ViewController.swift */,
-				5F020EC02794844F004E1010 /* InfoViewController.swift */,
+				5F020EBA27941351004E1010 /* ViewCell.swift */,
+				5F5C7930279DCAE3002F0600 /* MemViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -122,7 +124,8 @@
 		5F020EC727949FBA004E1010 /* NetworkingSettings */ = {
 			isa = PBXGroup;
 			children = (
-				5F020EBC2794138D004E1010 /* NetworkingManager.swift */,
+				5F020EBC2794138D004E1010 /* NetworkManager.swift */,
+				5F5C792E279DC785002F0600 /* ImageCache.swift */,
 			);
 			path = NetworkingSettings;
 			sourceTree = "<group>";
@@ -198,12 +201,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F5C7931279DCAE3002F0600 /* MemViewController.swift in Sources */,
 				5F020EBB27941351004E1010 /* ViewCell.swift in Sources */,
 				5F020EB92794131C004E1010 /* ViewController.swift in Sources */,
 				5F020EA52794121C004E1010 /* AppDelegate.swift in Sources */,
-				5F020EC12794844F004E1010 /* InfoViewController.swift in Sources */,
 				5F020EBF27941CA7004E1010 /* MemsModel.swift in Sources */,
-				5F020EBD2794138D004E1010 /* NetworkingManager.swift in Sources */,
+				5F020EBD2794138D004E1010 /* NetworkManager.swift in Sources */,
+				5F5C792F279DC785002F0600 /* ImageCache.swift in Sources */,
 				5F020EA72794121C004E1010 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
