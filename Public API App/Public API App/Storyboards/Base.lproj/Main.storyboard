@@ -45,8 +45,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <outlet property="imageMemes" destination="eit-Pt-cZg" id="7xh-2B-32h"/>
-                                    <segue destination="I3v-PN-Lia" kind="show" identifier="showInfoVC" id="rYM-xe-qHa"/>
+                                    <outlet property="imageMemes" destination="eit-Pt-cZg" id="SO1-qC-6ha"/>
+                                    <segue destination="I3v-PN-Lia" kind="show" identifier="showInfoVC" id="uFJ-0d-EbH"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

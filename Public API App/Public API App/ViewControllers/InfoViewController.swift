@@ -8,7 +8,11 @@
 import UIKit
 
 class InfoViewController: UIViewController {
-    @IBOutlet weak var imageLabel: UIImageView!
+    @IBOutlet weak var imageLabel: UIImageView! {
+        didSet {
+//            imageLabel.
+        }
+    }
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
     

@@ -28,11 +28,11 @@ class ViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        1
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return memes.count
+        memes.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -78,4 +78,34 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         20
     }
+}
+
+extension ViewController {
+    private func successAlert() {
+    DispatchQueue.main.async {
+        let alert = UIAlertController(
+            title: "Success",
+            message: "You can see the results in the Debug aria",
+            preferredStyle: .alert
+        )
+        
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+            self.present(alert, animated: true)
+    }
+}
+
+private func failedAlert() {
+    DispatchQueue.main.async {
+        let alert = UIAlertController(
+            title: "Failed",
+            message: "You can see error in the Debug aria",
+            preferredStyle: .alert
+        )
+        
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+            self.present(alert, animated: true)
+    }
+}
 }
